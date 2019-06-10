@@ -1,0 +1,32 @@
+{
+  "name": "myApi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/q331593648/myApi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/q331593648/myApi/issues"
+  },
+  "homepage": "https://github.com/q331593648/myApi#readme",
+  "devDependencies": {
+    "await-fs": "^1.0.0",
+    "co-mysql": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.7.0",
+    "koa-better-body": "^3.0.4",
+    "koa-jwt": "^3.5.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa2-cors": "^2.0.6",
+    "mysql": "^2.17.1"
+  }
+}
