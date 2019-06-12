@@ -56,7 +56,7 @@ error_map.set(ApiErrorNames.PARAM_TYPE_BIND_ERROR, { code: 10003, message: '参�
 error_map.set(ApiErrorNames.PARAM_NOT_COMPLETE, { code: 10004, message: '参数缺失' });
 /* 用户错误：20001-29999*/
 error_map.set(ApiErrorNames.USER_NOT_LOGGED_IN, { code: 20001, message: '用户未登录' });
-error_map.set(ApiErrorNames.USER_LOGIN_ERROR, { code: 20002, message: '账号不存在或密码错误' });
+error_map.set(ApiErrorNames.USER_LOGIN_ERROR, { code: 20002, message: '密码错误' });
 error_map.set(ApiErrorNames.USER_ACCOUNT_FORBIDDEN, { code: 20003, message: '账号已被禁用' });
 error_map.set(ApiErrorNames.USER_NOT_EXIST, { code: 20004, message: '用户不存在' });
 error_map.set(ApiErrorNames.USER_HAS_EXISTED, { code: 20005, message: '用户已存在' });
@@ -110,4 +110,4 @@ ApiErrorNames.getSuccessInfo = (data) => {
     return success_info;
 }
 
-module.exports = ApiErrorNames;
+module.exports = {ApiErrorNames};
