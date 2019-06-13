@@ -18,5 +18,12 @@ module.exports={
         }
       });
     });
+  },
+  pagination(pageNum,pageSize){
+    let pageNo = 0;
+    if(pageNum >1){
+      pageNo = (pageNum - 1) * pageSize
+    }
+    return pageNo
   }
 }

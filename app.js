@@ -33,7 +33,7 @@ app.use(koaRequest({//请求第三方接口
 
 //验证token
 app.use(koajwt({
-	secret: config.tokenSecret//token加密密钥
+  secret: config.tokenSecret//token加密密钥
 }).unless({
 	path: [/\/user/,/\/upload/] //不验证token的路由
 }));
