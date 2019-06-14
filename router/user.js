@@ -26,11 +26,13 @@ router.post("login",async ctx=>{
   } else if (datas[0].password != common.md5(ctx.config.ADMIN_PREFIX + password)) {//密码错误
     ({code,message} = ApiErrorNames.getErrorInfo("USER_LOGIN_ERROR"));
   } else {//返回token给前端
-    let token = addtoken({username:datas[0].username,id:datas[0].id})  //token中要携带的信息，自己定义
+    let id = datas[0].id;
+    let token = addtoken({username:datas[0].username,id})  //token中要携带的信息，自己定义
     data={
       username,
       token
-    }
+    };
+    await ctx.redis.hset("tokens",id,token);
   }
   /* 返回页面参数*/
     ctx.body = {

@@ -41,6 +41,7 @@ ApiErrorNames.INTERFACE_EXCEED_LOAD = 'INTERFACE_EXCEED_LOAD';
 /* 权限错误：70001-79999 */
 ApiErrorNames.PERMISSION_NO_ACCESS = 'PERMISSION_NO_ACCESS';
 ApiErrorNames.INVALID_TOKEN = 'INVALID_TOKEN';
+ApiErrorNames.ELSE_TOKEN = 'ELSE_TOKEN';
 
 /**
  * API错误名称对应的错误信息
@@ -78,6 +79,7 @@ error_map.set(ApiErrorNames.INTERFACE_EXCEED_LOAD, { code: 60006, message: '接�
 /* 权限错误：70001-79999 */
 error_map.set(ApiErrorNames.PERMISSION_NO_ACCESS, { code: 70001, message: '无访问权限' });
 error_map.set(ApiErrorNames.INVALID_TOKEN, { code: 70002, message: '无效token' });
+error_map.set(ApiErrorNames.ELSE_TOKEN, { code: 70003, message: '在其他地方登录了' });
 
 //根据错误名称获取错误信息
 ApiErrorNames.getErrorInfo = (error_name) => {

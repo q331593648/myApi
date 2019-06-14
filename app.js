@@ -4,17 +4,21 @@ const body = require('koa-better-body');//处理接口参数
 const cors = require('koa2-cors');//处理跨域问题
 const config=require('./config');//引入配置文件
 const koajwt = require('koa-jwt');//token验证
+const auth = require('./token/checkToken');//token验证
 const static=require('./router/static');//请求img、js、css等文件时，不需要其他逻辑，只需要读取文件
 const koaRequest = require('koa-http-request');//请求第三方接口
+const {ApiErrorNames} = require('./libs/ApiErrorNames');
+
 let app = new Koa();
 
 // 错误处理
 app.use(async (ctx, next) => {
   return next().catch((err) => {
+    let errorType = err.message ||"INVALID_TOKEN";
       if(err.status === 401){
+        let {code,message} = ApiErrorNames.getErrorInfo(errorType);
         ctx.body = {
-          code:70002,
-          message:"无效token"
+          code,message
         }
       }else{
           throw err;
@@ -35,10 +39,13 @@ app.use(koaRequest({//请求第三方接口
 app.use(koajwt({
   secret: config.tokenSecret//token加密密钥
 }).unless({
-	path: [/\/user/,/\/upload/] //不验证token的路由
+	path: [/^\/user/,/^\/upload/] //不验证token的路由
 }));
+app.use(auth);
+
 //数据库
 app.context.db = require('./libs/database');//数据库信息存context下的db
+app.context.redis = require('./libs/redisbase');//数据库信息存context下的db
 app.context.config=config;//配置信息存context下的config
 
 router.use('/', require('./router/index'));
